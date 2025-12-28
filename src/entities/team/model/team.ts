@@ -12,7 +12,7 @@ export type TeamMember = {
 };
 
 export async function fetchTeam(): Promise<TeamMember[]> {
-    const url = getEnv().VITE_TEAM_API_URL ?? '/teams.json';
+    const url = getEnv().VITE_TEAM_API_URL ?? 'teams.json';
 
     const res = await fetch(url);
 
