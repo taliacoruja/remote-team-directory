@@ -8,7 +8,7 @@ and thoughtful UI details rather than complex business logic.
 
 ---
 
-## ✨ Features
+## Features
 
 - Remote team directory with responsive grid layout
 - Modern card design with avatars, status badges, and skill chips
@@ -19,7 +19,7 @@ and thoughtful UI details rather than complex business logic.
 
 ---
 
-## 🧱 Architecture
+## Architecture
 
 The project is intentionally split into clear layers:
 
@@ -34,7 +34,7 @@ This keeps domain logic, UI primitives, and page composition cleanly separated.
 
 ---
 
-## 🎨 Design & Theming
+## Design & Theming
 
 - Design tokens are implemented via CSS variables
 - Themes are switched using `data-theme` on the root element
@@ -45,7 +45,7 @@ This keeps domain logic, UI primitives, and page composition cleanly separated.
 
 ---
 
-## 🖼 Avatars
+## Avatars
 
 - Avatars use **Picsum Photos** as a visual placeholder to explore UI layout
 - Avatar URLs are deterministic (based on member id)
@@ -54,7 +54,7 @@ This keeps domain logic, UI primitives, and page composition cleanly separated.
 
 ---
 
-## ♿ Accessibility
+## Accessibility
 
 - Semantic HTML structure
 - Decorative images use empty `alt` attributes
@@ -63,7 +63,7 @@ This keeps domain logic, UI primitives, and page composition cleanly separated.
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - React
 - TypeScript
