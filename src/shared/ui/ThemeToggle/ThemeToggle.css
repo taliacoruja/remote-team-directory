@@ -63,8 +63,8 @@
     top: 50%;
     transform: translateY(-50%) scale(1) rotate(0deg);
 
-    -webkit-mask: url('src/assets/light-theme.svg') center / contain no-repeat;
-    mask: url('src/assets/light-theme.svg') center / contain no-repeat;
+    -webkit-mask: url('/icons/light-theme.svg') center / contain no-repeat;
+    mask: url('/icons/light-theme.svg') center / contain no-repeat;
 
     background: #ffb300;
     filter: drop-shadow(0 4px 8px rgba(255, 179, 0, 0.35));
@@ -78,8 +78,8 @@
 }
 
 .theme-toggle[aria-pressed='true']::before {
-    -webkit-mask: url('src/assets/dark-theme.svg') center / contain no-repeat;
-    mask: url('src/assets/dark-theme.svg') center / contain no-repeat;
+    -webkit-mask: url('/icons/dark-theme.svg') center / contain no-repeat;
+    mask: url('/icons/dark-theme.svg') center / contain no-repeat;
     filter: drop-shadow(0 4px 8px rgba(255, 179, 0, 0.35));
     background: #0057c9;
     animation: moon-sway 3.5s ease-in-out infinite;
