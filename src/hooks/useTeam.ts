@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchTeam } from '../api/team';
+import { fetchTeam } from '../entities/team/model/team';
 import type { TeamMember } from '../entities/team/model/team';
 
 export type LoadStatus = 'loading' | 'ready' | 'error';
