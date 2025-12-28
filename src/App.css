@@ -1,0 +1,67 @@
+/* ============ THEME TOKENS ============ */
+@import './styles/tokens.css';
+
+/* ============ BASE ============ */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+
+    color: var(--text);
+    font: 500 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.page {
+    min-height: 100vh;
+    padding: 40px 0 64px;
+    background: radial-gradient(
+            1000px 700px at 20% -10%,
+            rgba(125, 211, 252, 0.16),
+            transparent 60%
+        ),
+        radial-gradient(900px 700px at 90% 0%, rgba(167, 139, 250, 0.14), transparent 55%),
+        var(--bg);
+}
+
+.container {
+    width: min(1100px, 100%);
+    margin-inline: auto;
+    padding-inline: 20px;
+}
+
+@media (max-width: 620px) {
+    .page {
+        padding: 28px 0 48px;
+    }
+    .container {
+        padding-inline: 16px;
+    }
+}
+
+/* ============ TOPBAR ============ */
+.topbar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.h1 {
+    margin: 0;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+}
+
+.subtle {
+    margin: 8px 0 0;
+    color: var(--muted);
+}
