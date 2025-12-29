@@ -165,3 +165,125 @@
     font-weight: 650;
     line-height: 1;
 }
+
+.hl {
+    padding: 0 2px;
+    border-radius: 6px;
+    background: rgba(125, 211, 252, 0.22);
+    border: 1px solid rgba(125, 211, 252, 0.25);
+    color: inherit;
+}
+
+:root[data-theme='light'] .hl {
+    background: rgba(37, 99, 235, 0.14);
+    border-color: rgba(37, 99, 235, 0.18);
+}
+
+.card__subtitle {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.01em;
+
+    opacity: 0;
+    transform: translateY(-2px);
+    transition: opacity 120ms ease, transform 120ms ease;
+}
+.card:hover .card__subtitle,
+.card:focus-within .card__subtitle {
+    opacity: 0.95;
+    transform: translateY(0);
+}
+@keyframes annoyed-shake {
+    0% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(-3px);
+    }
+    40% {
+        transform: translateX(3px);
+    }
+    60% {
+        transform: translateX(-2px);
+    }
+    80% {
+        transform: translateX(2px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.card--annoyed {
+    animation: annoyed-shake 240ms ease-in-out;
+}
+
+/* Цвета по data-availability */
+.card[data-availability='available'] .card__subtitle {
+    color: rgba(34, 197, 94, 0.95);
+}
+
+.card[data-availability='focus'] .card__subtitle {
+    color: rgba(234, 179, 8, 0.95);
+}
+
+.card[data-availability='in_meeting'] .card__subtitle {
+    color: rgba(167, 139, 250, 0.95);
+}
+
+.card[data-availability='offline'] .card__subtitle {
+    color: rgba(167, 0, 125, 0.9);
+}
+
+.card--runaway {
+    animation: run-away 1.5s both;
+}
+
+.card--runaway:hover {
+    transform: none;
+}
+
+@keyframes run-away {
+    0% {
+        transform: translateY(0);
+        animation-timing-function: ease-out;
+    }
+    5% {
+        transform: translateY(30px);
+        animation-timing-function: ease-in;
+    }
+    15% {
+        transform: translateY(0);
+        animation-timing-function: ease-out;
+    }
+    25% {
+        transform: translateY(38px);
+        animation-timing-function: ease-in;
+    }
+    38% {
+        transform: translateY(0);
+        animation-timing-function: ease-out;
+    }
+    52% {
+        transform: translateY(75px);
+        animation-timing-function: ease-in;
+    }
+    70% {
+        transform: translateY(0);
+        animation-timing-function: ease-out;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(800px);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card--runaway {
+        animation: none;
+    }
+}

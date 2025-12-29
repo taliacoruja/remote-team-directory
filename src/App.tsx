@@ -1,17 +1,38 @@
 import './App.css';
 import { useTeam } from './hooks/useTeam';
-import { TeamList } from './entities/ui/TeamList/TeamList';
-import { ThemeToggle } from './shared/ui/ThemeToggle/ThemeToggle';
+import { TeamList } from './entities/components/TeamList/TeamList.component';
+import { ThemeToggle } from './shared/components/ThemeToggle/ThemeToggle.component';
 import { useTheme } from './hooks/useTheme';
+import { useMemo, useState } from 'react';
+import { FiltersBar } from './shared/components/FiltersBar/FiltersBar.component';
+import { DEFAULT_FILTERS } from './features/filters/model/filter-defaults';
+import type { FiltersState } from './features/filters/model/filter-types';
+import { appyFilters } from './shared/lib/applyFilters';
+import { EmptyState } from './shared/components/EmptyState/EmptyState.component';
+import { LoadingState } from './shared/components/LoadingState/LoadingState.component';
+import { ErrorState } from './shared/components/ErrorState/ErrorState.component';
 
 function App() {
     const { team, status, error } = useTeam();
     const { theme, toggle } = useTheme();
 
-    if (status === 'loading') return <p>Loading Team</p>;
-    if (status === 'error') return <p role='alert'>Error: {error}</p>;
+    const [filters, setFilters] = useState<FiltersState>(DEFAULT_FILTERS);
 
-    const membersAmount = status === 'ready' ? team.length : '-';
+    const filteredTeam = useMemo(() => appyFilters(team, filters), [team, filters]);
+
+    const resetFilters = () => setFilters(DEFAULT_FILTERS);
+    const clearSearch = () => setFilters((prev) => ({ ...prev, searchQuery: '' }));
+
+    if (status === 'loading') return <LoadingState />;
+    if (status === 'error')
+        return (
+            <ErrorState
+                message={error ?? 'Unknown error'}
+                onRetry={() => window.location.reload()}
+            />
+        );
+
+    const membersAmount = status === 'ready' ? filteredTeam.length : '-';
 
     return (
         <main className='page'>
@@ -19,14 +40,27 @@ function App() {
                 <header className='topbar'>
                     <div className='topbar__wrap'>
                         <h1 className='topbar__title'>Remote Team</h1>
-
+                        <FiltersBar
+                            value={filters}
+                            onChange={setFilters}
+                            onReset={() => setFilters(DEFAULT_FILTERS)}
+                            resultsCount={filteredTeam.length}
+                        />
                         <p className='subtle'>Results: {membersAmount}</p>
                     </div>
 
                     <ThemeToggle theme={theme} onToggle={toggle} />
                 </header>
 
-                <TeamList team={team} />
+                {filteredTeam.length === 0 ? (
+                    <EmptyState
+                        filters={filters}
+                        onReset={resetFilters}
+                        onClearSearch={clearSearch}
+                    />
+                ) : (
+                    <TeamList team={filteredTeam} highlightQuery={filters.searchQuery} />
+                )}
             </div>
         </main>
     );

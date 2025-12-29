@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { getInitials } from '../../../shared/lib/getInitials';
-import './TeamAvatar.css';
+import './TeamAvatar.style.css';
 
 type Props = {
     id: string;
@@ -20,7 +20,11 @@ export function TeamAvatar({ id, name }: Props) {
                     src={avatarUrl}
                     alt={`${name} avatar`}
                     loading='lazy'
-                    onError={() => setImageError(true)}
+                    onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = '';
+                        setImageError(true);
+                    }}
                 />
             ) : (
                 <span className='card__avatar-fallback'>{initials}</span>

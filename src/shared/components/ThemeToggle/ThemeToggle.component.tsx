@@ -1,5 +1,5 @@
 import type { Theme } from '../../../hooks/useTheme';
-import './ThemeToggle.css';
+import './ThemeToggle.style.css';
 
 export function ThemeToggle({ theme, onToggle }: { theme: Theme; onToggle: () => void }) {
     return (

@@ -1,5 +1,8 @@
 .theme-toggle {
-    position: relative;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+
     appearance: none;
     border: 1px solid var(--border);
     background: linear-gradient(180deg, var(--surface-2), var(--surface));
@@ -109,5 +112,19 @@
     }
     100% {
         transform: translateY(-50%) rotate(-6deg);
+    }
+}
+
+@media (max-width: 620px) {
+    .card {
+        width: 100%;
+        max-width: 90vw;
+    }
+}
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .theme-toggle[aria-pressed='true']::before,
+    [data-theme='light'] .theme-toggle::before {
+        animation: none;
     }
 }

@@ -1,0 +1,50 @@
+.empty {
+    padding: 18px 0 8px;
+}
+
+.empty__card {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+}
+.empty__title {
+    margin: 0 0 6px;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+}
+
+.empty__text {
+    margin: 0 0 10px;
+    color: var(--muted);
+}
+
+.empty__meta {
+    margin: 0 0 14px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.empty__meta-label {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.empty__actions {
+    display: flex;
+    gap: 10px;
+}
+
+.empty__btn {
+    border: 1px solid var(--border);
+    background: var(--btn);
+    color: var(--btnText);
+    border-radius: 12px;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.empty__btn:hover {
+    filter: brightness(1.03);
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchTeam } from '../entities/team/model/team';
 import type { TeamMember } from '../entities/team/model/team';
+import { delay } from '../shared/lib/delay';
 
 export type LoadStatus = 'loading' | 'ready' | 'error';
 
@@ -13,6 +14,7 @@ export function useTeam() {
         async function loadTeam(): Promise<void> {
             try {
                 setStatus('loading');
+                await delay(400);
                 const teamData = await fetchTeam();
                 setTeam(teamData);
                 setStatus('ready');
@@ -25,5 +27,6 @@ export function useTeam() {
 
         loadTeam();
     }, []);
+
     return { team, status, error };
 }
