@@ -1,81 +1,65 @@
 # Remote Team Directory
 
-A small React + TypeScript + Vite project that showcases a modern, accessible UI
-for browsing a distributed remote team.
+A small **React + TypeScript + Vite** project showcasing a modern, accessible UI
+for browsing a distributed remote team. Focus: **clean UI architecture, design tokens, a11y, and polished micro-interactions**.
 
-The project focuses on clean component architecture, design tokens,
-and thoughtful UI details rather than complex business logic.
+**Live demo:** https://taliacoruja.github.io/remote-team-directory/
+
+---
+
+## Preview
+
+<p align="center">
+  <img src="./public/docs/preview-light.png" width="48%" alt="Light theme preview" />
+  <img src="./public/docs/preview-dark.png" width="48%" alt="Dark theme preview" />
+</p>
 
 ---
 
 ## Features
 
-- Remote team directory with responsive grid layout
-- Modern card design with avatars, status badges, and skill chips
+- Responsive team grid with modern cards (avatar, status badge, skill chips)
+- **Filters + sorting + search** (if applicable — list the exact ones you support)
 - Dark / Light theme with system preference support
 - Persistent theme selection (localStorage)
-- Deterministic placeholder avatars with graceful fallback
-- Accessibility-first approach (semantic HTML, keyboard-friendly controls)
+- Deterministic placeholder avatars + graceful fallback to initials
+- Accessibility-first UI (semantic HTML, keyboard-friendly controls)
 
 ---
 
-## Architecture
+## What I focused on
 
-The project is intentionally split into clear layers:
-
-- **pages** — page-level composition
-- **entities** — domain-related UI and models (`team`)
-- **shared**
-  - `ui` — reusable UI components (ThemeToggle, states)
-  - `hooks` — reusable logic (useTheme)
-  - `styles` — global design tokens and themes
-
-This keeps domain logic, UI primitives, and page composition cleanly separated.
+- Clear UI layering (pages / entities / shared)
+- Reusable UI primitives (Listbox, SearchInput, States)
+- CSS design tokens via variables + theme switching via `data-theme`
+- A11y basics done right: focus visibility, ARIA where needed, keyboard navigation
 
 ---
 
-## Design & Theming
+## Tech stack
 
-- Design tokens are implemented via CSS variables
-- Themes are switched using `data-theme` on the root element
-- Initial theme is resolved in the following order:
-  1. User preference (localStorage)
-  2. System preference (`prefers-color-scheme`)
-- Theme toggle is implemented as an accessible UI control (`aria-pressed`)
-
----
-
-## Avatars
-
-- Avatars use **Picsum Photos** as a visual placeholder to explore UI layout
-- Avatar URLs are deterministic (based on member id)
-- If an image fails to load, initials are shown as a fallback
-- In a real product, avatar URLs would be provided by the backend
+- React 19
+- TypeScript
+- Vite
+- CSS Modules + design tokens (CSS variables)
+- ESLint
 
 ---
 
-## Accessibility
+## Accessibility notes
 
-- Semantic HTML structure
-- Decorative images use empty `alt` attributes
-- Interactive elements are keyboard-accessible
+- Semantic structure for cards and layout
+- Decorative images use empty `alt`
+- Keyboard-accessible controls (including the Listbox)
 - Theme toggle exposes state via `aria-pressed`
 
 ---
 
-## Tech Stack
-
-- React
-- TypeScript
-- Vite
-- CSS (design tokens + component-level styles)
-
----
-
-## 🚧 In Progress
+## Getting started
 
 ```bash
-npm install
-npm run dev
-
-
+npm install       # installs project dependencies
+npm run dev       # start local dev server
+npm run build     # type-check and build for production
+npm run preview   # preview production build locally
+npm run lint      # run ESLint
