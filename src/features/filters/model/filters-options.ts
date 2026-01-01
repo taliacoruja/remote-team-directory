@@ -12,7 +12,7 @@ export const availabilityOptions: Array<ListboxOption<Availability | 'all'>> = [
 
 export const timezoneOptions: Array<ListboxOption<TimezoneRange>> = [
     { value: 'all', label: 'All' },
-    { value: 'america', label: 'Americas (UTC ≤ -3)' },
+    { value: 'america', label: 'America (UTC ≤ -3)' },
     { value: 'europe', label: 'Europe (UTC -2…+3)' },
     { value: 'asia', label: 'Asia (UTC ≥ +4)' },
 ];

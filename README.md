@@ -19,7 +19,7 @@ for browsing a distributed remote team. Focus: **clean UI architecture, design t
 ## Features
 
 - Responsive team grid with modern cards (avatar, status badge, skill chips)
-- **Filters + sorting + search** (if applicable — list the exact ones you support)
+- **Filters + sorting + search** 
 - Dark / Light theme with system preference support
 - Persistent theme selection (localStorage)
 - Deterministic placeholder avatars + graceful fallback to initials
