@@ -39,12 +39,12 @@ function App() {
             <div className='container'>
                 <header className='topbar'>
                     <div className='topbar__wrap'>
-                        <h1 className='topbar__title'>Remote Team</h1>
+                        <h1 className='topbar__title'>Before You Ping</h1>
+                        <p className='topbar__text'>A human-friendly team directory.</p>
                         <FiltersBar
                             value={filters}
                             onChange={setFilters}
                             onReset={() => setFilters(DEFAULT_FILTERS)}
-                            resultsCount={filteredTeam.length}
                         />
                         <p className='subtle'>Results: {membersAmount}</p>
                     </div>

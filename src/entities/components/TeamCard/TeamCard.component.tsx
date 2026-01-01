@@ -3,6 +3,7 @@ import { TeamAvatar } from '../TeamAvatar/TeamAvatar.component';
 import { formatTimezone } from '../../../shared/lib/formatTimezone';
 import './TeamCard.style.css';
 import { highlightMatches } from '../../../shared/lib/highlightText';
+import { getSkillsMatch } from '../../../shared/lib/getSkillsMatch';
 import { getAvailabilitySubtitle } from '../../../shared/lib/getAvailabilitySubtitle';
 import { useRef } from 'react';
 
@@ -19,6 +20,8 @@ export function TeamCard({ member, highlightQuery = '' }: MemberProps) {
 
     const isAnnoyed = availability !== 'available';
     const isOffline = availability === 'offline';
+
+    const skillMatch = getSkillsMatch(member, highlightQuery);
 
     const handleClick = () => {
         const el = cardRef.current;
@@ -56,7 +59,7 @@ export function TeamCard({ member, highlightQuery = '' }: MemberProps) {
 
                 <div className='card__title'>
                     <h3 className='card__name'>{highlightMatches(name, highlightQuery)}</h3>
-                    <p className='card__role'>{role}</p>
+                    <p className='card__role'>{highlightMatches(role, highlightQuery)}</p>
                     <p className='card__subtitle'>{getAvailabilitySubtitle(availability)}</p>
                 </div>
 
@@ -64,7 +67,11 @@ export function TeamCard({ member, highlightQuery = '' }: MemberProps) {
                     {availability.replace('_', ' ')}
                 </span>
             </header>
-
+            {skillMatch && (
+                <p className='card__match'>
+                    Matched: <mark className='card__match-skill'>{skillMatch}</mark>
+                </p>
+            )}
             <span className={`card__badge badge--${availability}`}></span>
             <div className='card__meta'>
                 <span className='meta-pill'>

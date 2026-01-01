@@ -12,10 +12,9 @@ type Props = {
     value: FiltersState;
     onChange: (next: FiltersState) => void;
     onReset: () => void;
-    resultsCount: number;
 };
 
-export function FiltersBar({ value, onChange, onReset, resultsCount }: Props) {
+export function FiltersBar({ value, onChange, onReset }: Props) {
     const update = <K extends keyof FiltersState>(key: K, next: FiltersState[K]) => {
         onChange({ ...value, [key]: next });
     };
@@ -24,9 +23,6 @@ export function FiltersBar({ value, onChange, onReset, resultsCount }: Props) {
         <form className='filters' role='search' aria-label='Team filters'>
             <div className='filters__row'>
                 <SearchInput value={value.searchQuery} onChange={(q) => update('searchQuery', q)} />
-                <p className='filters__results' aria-live='polite'>
-                    Results: {resultsCount}
-                </p>
             </div>
 
             <div className='filters__row filters__row--controls'>

@@ -114,6 +114,21 @@
     border-color: rgba(167, 139, 250, 0.35);
     background: rgba(167, 139, 250, 0.1);
 }
+.card__match {
+    margin-top: 4px;
+    text-align: right;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.card__match-skill {
+    padding: 2px;
+    font-weight: 600;
+    background: rgba(125, 211, 252, 0.22);
+    border: 1px solid rgba(125, 211, 252, 0.25);
+    color: inherit;
+    border-radius: 4px;
+}
 
 .card__meta {
     margin-top: 12px;
@@ -244,44 +259,20 @@
 }
 @keyframes run-away {
     0% {
-        transform: translateY(0);
-        animation-timing-function: ease-out;
-    }
-    5% {
-        transform: translateY(30px);
-        animation-timing-function: ease-in;
-    }
-    15% {
-        transform: translateY(0);
-        animation-timing-function: ease-out;
-    }
-    25% {
-        transform: translateY(38px);
-        animation-timing-function: ease-in;
-    }
-    38% {
-        transform: translateY(0);
-        animation-timing-function: ease-out;
-    }
-    52% {
-        transform: translateY(75px);
-        animation-timing-function: ease-in;
-    }
-    70% {
-        transform: translateY(0);
-        animation-timing-function: ease-out;
-    }
-    85% {
         opacity: 1;
     }
-    100% {
-        transform: translateY(800px);
+
+    50% {
         opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .card--runaway {
+    .card--runaway,
+    .card--annoyed {
         animation: none;
     }
 }

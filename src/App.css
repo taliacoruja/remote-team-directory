@@ -36,15 +36,6 @@ body {
     padding-inline: 20px;
 }
 
-@media (max-width: 620px) {
-    .page {
-        padding: 28px 0 48px;
-    }
-    .container {
-        padding-inline: 16px;
-    }
-}
-
 /* ============ TOPBAR ============ */
 .topbar {
     display: flex;
@@ -54,14 +45,31 @@ body {
     margin-bottom: 22px;
 }
 
-.h1 {
+.topbar__title {
     margin: 0;
     font-size: clamp(32px, 5vw, 56px);
     letter-spacing: -0.03em;
     line-height: 1.05;
 }
+.topbar__text {
+    margin-top: 8px;
+    margin-bottom: 36px;
+}
 
 .subtle {
     margin: 8px 0 0;
     color: var(--muted);
+}
+
+@media (max-width: 620px) {
+    .page {
+        padding: 28px 0 48px;
+    }
+    .container {
+        padding-inline: 16px;
+    }
+    .topbar {
+        padding-top: 46px;
+        text-align: center;
+    }
 }

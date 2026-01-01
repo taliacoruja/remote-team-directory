@@ -6,7 +6,11 @@ type InputProps = {
     placeholder?: string;
 };
 
-export function SearchInput({ value, onChange, placeholder = 'Start typing name' }: InputProps) {
+export function SearchInput({
+    value,
+    onChange,
+    placeholder = 'Search name, role or skill',
+}: InputProps) {
     const id = 'team-search';
 
     return (
