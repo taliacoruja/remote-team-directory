@@ -43,6 +43,7 @@ export function TeamCard({ member, highlightQuery = '' }: MemberProps) {
 
     return (
         <article
+            data-testid='member-card'
             className='card'
             ref={cardRef}
             tabIndex={0}
@@ -58,7 +59,9 @@ export function TeamCard({ member, highlightQuery = '' }: MemberProps) {
                 <TeamAvatar id={id} name={name} />
 
                 <div className='card__title'>
-                    <h3 className='card__name'>{highlightMatches(name, highlightQuery)}</h3>
+                    <h2 className='card__name' data-testid='member-name'>
+                        {highlightMatches(name, highlightQuery)}
+                    </h2>
                     <p className='card__role'>{highlightMatches(role, highlightQuery)}</p>
                     <p className='card__subtitle'>{getAvailabilitySubtitle(availability)}</p>
                 </div>

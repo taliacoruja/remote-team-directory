@@ -31,7 +31,7 @@ export function EmptyState({ filters, onReset, onClearSearch }: Props) {
             : { label: 'Reset filters', onClick: onReset };
 
     return (
-        <section className='empty' aria-labelledby='empty-title'>
+        <section className='empty' aria-labelledby='empty-title' data-testid='empty-state'>
             <div className='empty__card'>
                 <BlinkingEyes />
 

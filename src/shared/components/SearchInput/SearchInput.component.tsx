@@ -27,6 +27,7 @@ export function SearchInput({
                     value={value}
                     placeholder={placeholder}
                     onChange={(e) => onChange(e.target.value)}
+                    data-testid='search-input'
                 />
 
                 {value.length > 0 && (

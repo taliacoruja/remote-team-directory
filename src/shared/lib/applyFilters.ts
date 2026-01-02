@@ -9,7 +9,7 @@ function matchesSearch(member: TeamMember, search: string): boolean {
     return searchFields.includes(search);
 }
 
-export function appyFilters(team: TeamMember[], filters: FiltersState): TeamMember[] {
+export function applyFilters(team: TeamMember[], filters: FiltersState): TeamMember[] {
     const searchQuery = filters.searchQuery.trim().toLowerCase();
 
     return team

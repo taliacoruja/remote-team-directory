@@ -9,7 +9,7 @@ type Props = {
 
 export function TeamList({ team, highlightQuery }: Props) {
     return (
-        <section className='grid' aria-label='Team members'>
+        <section className='grid' aria-label='Team members' data-testid='members-list'>
             {team.map((member) => (
                 <TeamCard key={member.id} member={member} highlightQuery={highlightQuery} />
             ))}

@@ -32,6 +32,7 @@ export function FiltersBar({ value, onChange, onReset }: Props) {
                     value={value.availability}
                     options={availabilityOptions}
                     onChange={(v) => update('availability', v)}
+                    data-testid='availability-filter'
                 />
 
                 <Listbox
@@ -40,6 +41,7 @@ export function FiltersBar({ value, onChange, onReset }: Props) {
                     value={value.timezone}
                     options={timezoneOptions}
                     onChange={(v) => update('timezone', v)}
+                    data-testid='timezone-filter'
                 />
 
                 <Listbox
@@ -48,6 +50,7 @@ export function FiltersBar({ value, onChange, onReset }: Props) {
                     value={value.sortBy}
                     options={sortOptions}
                     onChange={(v) => update('sortBy', v)}
+                    data-testid='sort-filter'
                 />
 
                 <button type='button' className='filters__reset' onClick={onReset}>

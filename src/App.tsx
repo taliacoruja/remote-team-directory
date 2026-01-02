@@ -7,7 +7,7 @@ import { useMemo, useState } from 'react';
 import { FiltersBar } from './shared/components/FiltersBar/FiltersBar.component';
 import { DEFAULT_FILTERS } from './features/filters/model/filter-defaults';
 import type { FiltersState } from './features/filters/model/filter-types';
-import { appyFilters } from './shared/lib/applyFilters';
+import { applyFilters } from './shared/lib/applyFilters';
 import { EmptyState } from './shared/components/EmptyState/EmptyState.component';
 import { LoadingState } from './shared/components/LoadingState/LoadingState.component';
 import { ErrorState } from './shared/components/ErrorState/ErrorState.component';
@@ -18,7 +18,7 @@ function App() {
 
     const [filters, setFilters] = useState<FiltersState>(DEFAULT_FILTERS);
 
-    const filteredTeam = useMemo(() => appyFilters(team, filters), [team, filters]);
+    const filteredTeam = useMemo(() => applyFilters(team, filters), [team, filters]);
 
     const resetFilters = () => setFilters(DEFAULT_FILTERS);
     const clearSearch = () => setFilters((prev) => ({ ...prev, searchQuery: '' }));

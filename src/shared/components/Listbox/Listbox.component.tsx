@@ -12,9 +12,17 @@ type Props<T extends string> = {
     options: Array<ListboxOption<T>>;
     onChange: (next: T) => void;
     hint?: string;
+    'data-testid'?: string;
 };
 
-export function Listbox<T extends string>({ label, value, options, onChange, hint }: Props<T>) {
+export function Listbox<T extends string>({
+    label,
+    value,
+    options,
+    onChange,
+    hint,
+    'data-testid': testId,
+}: Props<T>) {
     const baseId = useId();
     const buttonId = `${baseId}-button`;
     const listId = `${baseId}-list`;
@@ -37,6 +45,7 @@ export function Listbox<T extends string>({ label, value, options, onChange, hin
         return options[selectedIndex] ?? options[0];
     }, [options, selectedIndex]);
 
+    // Close on outside click; return focus to button (a11y)
     useEffect(() => {
         if (!open) return;
 
@@ -45,12 +54,21 @@ export function Listbox<T extends string>({ label, value, options, onChange, hin
             if (buttonRef.current?.contains(target)) return;
             if (listRef.current?.contains(target)) return;
             setOpen(false);
+            buttonRef.current?.focus();
         };
 
         document.addEventListener('pointerdown', onDocPointerDown);
         return () => document.removeEventListener('pointerdown', onDocPointerDown);
     }, [open]);
 
+    // hen opening: focus listbox so keyboard handlers work
+    useEffect(() => {
+        if (!open) return;
+        // wait for <ul> to mount
+        queueMicrotask(() => listRef.current?.focus());
+    }, [open]);
+
+    // Keep active option in view
     useEffect(() => {
         if (!open) return;
         const el = document.getElementById(optionId(baseId, activeIndex));
@@ -154,6 +172,7 @@ export function Listbox<T extends string>({ label, value, options, onChange, hin
                     aria-describedby={hintId}
                     onClick={toggleList}
                     onKeyDown={onButtonKeyDown}
+                    data-testid={testId}
                 >
                     <span className='lb__value'>{selected?.label}</span>
                     <span className='lb__chev' aria-hidden='true' />
@@ -166,7 +185,8 @@ export function Listbox<T extends string>({ label, value, options, onChange, hin
                         className='lb__list'
                         role='listbox'
                         aria-labelledby={labelId}
-                        tabIndex={-1}
+                        tabIndex={0}
+                        aria-activedescendant={optionId(baseId, activeIndex)}
                         onKeyDown={onListKeyDown}
                     >
                         {options.map((opt, idx) => {
